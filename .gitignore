@@ -1,0 +1,25 @@
+## .NET
+bin/
+obj/
+out/
+
+## Visual Studio
+.vs/
+*.user
+*.suo
+
+## Rider / JetBrains
+.idea/
+
+## VS Code
+.vscode/
+
+## Test sonuçları
+[Tt]est[Rr]esult*/
+*.trx
+
+## Kullanıcı sırları
+**/appsettings.*.local.json
+
+## Uygulama verisi
+App_Data/
