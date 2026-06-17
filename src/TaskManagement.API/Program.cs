@@ -4,6 +4,7 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using TaskManagement.API.Middlewares;
 using TaskManagement.Application;
+using TaskManagement.Application.Features.Tasks.Commands.AddActivityLog;
 using TaskManagement.Infrastructure;
 using TaskManagement.Infrastructure.Persistence;
 using TaskManagement.Infrastructure.Persistence.Seed;
@@ -27,6 +28,8 @@ try
     // --- Katman bazlı IoC kayıtları (Clean Architecture) ---
     builder.Services.AddApplication();
     builder.Services.AddInfrastructure(builder.Configuration);
+
+  
 
     builder.Services.AddControllers()
         .AddJsonOptions(options =>

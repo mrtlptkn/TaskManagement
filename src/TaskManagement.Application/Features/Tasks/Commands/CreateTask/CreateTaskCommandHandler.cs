@@ -27,7 +27,10 @@ public class CreateTaskCommandHandler : IRequestHandler<CreateTaskCommand, Guid>
 
     public async Task<Guid> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
     {
-        var task = TaskItem.Create(
+    // Domain Layerda bir servis olsaydı bu task ile lakalı bir bussiness logic servis olacaktı bu sebeple burada bir taskın birine atanması ile ilgili hafata en fazla kaç saat task atanabilir veya kaç tane yüksek derecei task verebiliriz. kaç adet task atama hakkı kalmış gibi logicleri yönetirdi. 
+    // TaskAssigmentDomainService.CheckIfUserCan();
+
+    var task = TaskItem.Create(
             title: request.Title,
             description: request.Description,
             priority: request.Priority,
@@ -39,6 +42,8 @@ public class CreateTaskCommandHandler : IRequestHandler<CreateTaskCommand, Guid>
         {
             task.AddTodoItem(todoTitle, _currentUserService.UserId);
         }
+
+       
 
         await _taskRepository.AddAsync(task, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
